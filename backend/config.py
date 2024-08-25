@@ -1,5 +1,8 @@
 from dotenv import load_dotenv
 import os
+from datetime import timedelta
+
+import redis
 
 load_dotenv()
 
@@ -9,5 +12,8 @@ class Config:
     SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
-
-# print(Config.SECRET_KEY)
+    SESSION_TYPE = "filesystem"
+    SESSION_PERMANENT = False
+    SESSION_USE_SIGNER = True
+    # SESSION_REDIS = redis.from_url("redis://localhost:6379")
+    PERMANENT_SESSION_LIFETIME = timedelta(minutes=30)

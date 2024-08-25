@@ -1,5 +1,6 @@
-from flask import Blueprint, request, jsonify
-from flask_login import login_required, current_user
+from flask import Blueprint, request, jsonify, session
+
+# from flask_login import login_required, current_user
 from app import db
 from app.models import Prompt
 
@@ -13,7 +14,9 @@ def generatePoem():
     prompt = data.get("prompt")
     poem = "This is a poem"
     emotions = "Happy"
-    new_prompt = Prompt(prompt=prompt, poem=poem, emotions=emotions, user_id=1)
+    new_prompt = Prompt(
+        prompt=prompt, poem=poem, emotions=emotions, user_id=session["user_id"]
+    )
     db.session.add(new_prompt)
     db.session.commit()
 

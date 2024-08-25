@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify, session
 from flask_login import login_required, current_user
 from app.models import Prompt
 
@@ -7,7 +7,7 @@ history_bp = Blueprint("history", __name__)
 
 @history_bp.route("/", methods=["GET"])
 def history():
-    history = Prompt.query.filter_by(user_id=1).all()
+    history = Prompt.query.filter_by(user_id=session["user_id"]).all()
     return (
         jsonify(
             [
