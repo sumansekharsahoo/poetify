@@ -17,3 +17,4 @@ class Config:
     SESSION_USE_SIGNER = True
     # SESSION_REDIS = redis.from_url("redis://localhost:6379")
     PERMANENT_SESSION_LIFETIME = timedelta(minutes=30)
+    OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY")

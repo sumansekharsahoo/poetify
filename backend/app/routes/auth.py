@@ -56,7 +56,12 @@ def signup():
         db.session.commit()
         session["user_id"] = new_user.id
 
-    return jsonify({"message": "Account created successfully"}), 201
+    return (
+        jsonify(
+            {"message": "Account created successfully", "name": name, "email": email}
+        ),
+        201,
+    )
 
 
 @auth_bp.route("/login", methods=["POST"])

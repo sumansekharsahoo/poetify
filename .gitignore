@@ -4,3 +4,14 @@
 /backend/instance/
 /backend/app/__pycache__/
 /backend/app/routes/__pycache__/
+
+# Logs
+/frontend/logs
+/frontend/*.log
+/frontend/npm-debug.log*
+/frontend/yarn-debug.log*
+/frontend/yarn-error.log*
+/frontend/pnpm-debug.log*
+/frontend/lerna-debug.log*
+
+/frontend/node_modules/
