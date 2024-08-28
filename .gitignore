@@ -4,6 +4,7 @@
 /backend/instance/
 /backend/app/__pycache__/
 /backend/app/routes/__pycache__/
+/backend/flask_session
 
 # Logs
 /frontend/logs

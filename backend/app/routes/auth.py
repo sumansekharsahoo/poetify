@@ -58,7 +58,12 @@ def signup():
 
     return (
         jsonify(
-            {"message": "Account created successfully", "name": name, "email": email}
+            {
+                "message": "Account created successfully",
+                "user_id": new_user.id,
+                "name": name,
+                "email": email,
+            }
         ),
         201,
     )
@@ -74,13 +79,23 @@ def login():
 
     if user and check_password_hash(user.password_hash, password):
         session["user_id"] = user.id
-        return jsonify({"message": "Login successful"}), 200
+        return (
+            jsonify(
+                {
+                    "message": "Login successful",
+                    "user_id": user.id,
+                    "name": user.name,
+                    "email": user.email,
+                    "session": session["user_id"],
+                }
+            ),
+            200,
+        )
     else:
         return jsonify({"message": "Login failed. Check your credentials"}), 401
 
 
 @auth_bp.route("/logout", methods=["POST"])
-@login_required
 def logout():
     session.pop("user_id", None)
     return jsonify({"message": "Logout successful"}), 200
@@ -91,7 +106,10 @@ def logout():
 def currentUser():
     user = get_current_user()
     if user:
-        return jsonify({"name": user.name, "email": user.email}), 200
+        return (
+            jsonify({"user_id": user.id, "name": user.name, "email": user.email}),
+            200,
+        )
     else:
         return jsonify({"message": "User not found"}), 404
 
