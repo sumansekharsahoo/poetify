@@ -1,3 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Aleo:ital,wght@0,100..900;1,100..900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+body{
+  font-family: "Aleo", serif;
+    font-optical-sizing: auto;
+    /* font-weight: <weight>; */
+    font-style: normal;
+}
+
+.backgroundGradient {
+background: rgb(228, 18, 227);
+  background: linear-gradient(0deg, rgba(228, 18, 227, 1) 12%, rgba(217, 0, 0, 1) 65%);
+}
+
+.fontWhite{
+  color:#fbeae8;
+}

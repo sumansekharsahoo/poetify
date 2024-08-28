@@ -43,15 +43,50 @@ def generate_poem_event(data):
     db.session.add(new_entry)
     db.session.commit()
 
+    try:
+        anger = emotions["Anger"]
+    except:
+        anger = 0
+
+    try:
+        sadness = emotions["Sadness"]
+    except:
+        sadness = 0
+
+    try:
+        disgust = emotions["Disgust"]
+    except:
+        disgust = 0
+
+    try:
+        fear = emotions["Fear"]
+    except:
+        fear = 0
+
+    try:
+        joy = emotions["Joy"]
+    except:
+        joy = 0
+
     latest_prompt = Prompt.query.order_by(Prompt.id.desc()).first()
     new_emo = Emotion(
-        anger=emotions["Anger"],
-        sadness=emotions["Sadness"],
-        disgust=emotions["Disgust"],
-        fear=emotions["Fear"],
-        joy=emotions["Joy"],
+        anger=anger,
+        sadness=sadness,
+        disgust=disgust,
+        fear=fear,
+        joy=joy,
         prompt_id=latest_prompt.id,
     )
     db.session.add(new_emo)
     db.session.commit()
-    emit("poem_complete", {"poem": poem, "emotions": emotions["Joy"]})
+    emit(
+        "poem_complete",
+        {
+            "poem": poem,
+            "joy": joy,
+            "anger": anger,
+            "sadness": sadness,
+            "disgust": disgust,
+            "fear": fear,
+        },
+    )
