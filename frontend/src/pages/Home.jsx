@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { getUserId, getUserName } from '../utils/auth';
-import { getHistory, getPoem } from '../utils/api';
+import { getUserId, getUserName,delToken } from '../utils/auth';
+import { getHistory, getPoem,logoutUser } from '../utils/api';
 import { getRelativeTime } from '../utils/timeConvert';
 import ChatCell from '../components/ChatCell';
 import Modal from '../components/Modal';
@@ -48,6 +48,8 @@ const Home = () => {
   };
 
   const handleLogout = () => {
+    delToken();
+    logoutUser();
     navigate('/');
   }
 
@@ -69,7 +71,7 @@ const Home = () => {
           <h2 className="text-2xl font-semibold mb-4">Generate Poem</h2>
           <button
                 onClick={() => navigate('/generate')}
-                className="bg-[#ddbe58] text-stone-800 px-6 py-3 rounded-md font-semibold hover:bg-[#c7a535] transition duration-300"
+                className="bg-[#e5c96e] text-stone-800 px-6 py-3 rounded-md font-semibold hover:bg-[#dcbc50] transition duration-300"
               >
                 Generate Poem
               </button>

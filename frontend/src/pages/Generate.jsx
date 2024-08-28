@@ -123,7 +123,7 @@ const Generate = () => {
         <LogOut className="text-[#313131]" size={24} />
       </button>
       <div className="max-w-3xl mx-auto">
-        <h1 className="text-4xl font-bold text-white text-center mb-8 text-shadow-lg">Poem Generator</h1>
+        <h1 className="text-4xl font-bold text-[#404040] text-center mb-8 text-shadow-lg">Poem Generator</h1>
         <form onSubmit={handleSubmit} className="mb-8">
           <div className="flex items-center">
             <input

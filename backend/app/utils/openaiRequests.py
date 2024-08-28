@@ -54,7 +54,6 @@ def analyze_emotions(poem):
             "raw_response": emotions,
         }
 
-    print(emotions_dict)
     return emotions_dict
 
 

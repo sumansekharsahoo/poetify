@@ -16,14 +16,11 @@ def connect():
 
 @socketio.on("generate_poem")
 def generate_poem_event(data):
-    print("Socket connection established")
     prompt = data.get("prompt")
     user_id = data.get("user_id")
-    print("user is" + user_id)
     if not prompt:
         emit("error", {"message": "No prompt provided"})
         return
-    print(prompt)
     poem = ""
 
     for chunk in generate_poem(prompt):
@@ -32,8 +29,6 @@ def generate_poem_event(data):
 
     # emotions = analyze_emotions(poem)
     emotions = analyze_emotions(poem)
-    print("Here it is:  ")
-    print(session)
 
     latest_emotion = Emotion.query.order_by(Emotion.id.desc()).first()
     next_emotion_id = latest_emotion.id + 1 if latest_emotion else 1

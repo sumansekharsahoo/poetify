@@ -3,10 +3,10 @@ import React from 'react';
 const Modal = ({ isOpen, onClose, prompt, poem, joy, fear, anger, disgust, sadness, time }) => {
   if (!isOpen) return null;
   return (
-    <div className="fixed inset-0 flex items-center justify-center z-50">
+    <div className="fixed inset-0 flex items-center justify-center z-50 p-4 overflow-y-auto">
       <div className="fixed inset-0 bg-black bg-opacity-50 transition-opacity" onClick={onClose}></div>
-      <div className="bg-white w-full max-w-lg mx-auto rounded-lg shadow-xl overflow-hidden z-10">
-        <div className="p-6 space-y-6">
+      <div className="bg-white w-full max-w-4xl mx-auto rounded-lg shadow-xl overflow-hidden z-10 my-8">
+        <div className="p-6 space-y-6 max-h-[calc(100vh-4rem)] overflow-y-auto">
           <div className="space-y-2">
             <h3 className="text-xl font-semibold text-gray-900">Prompt:</h3>
             <p className="text-gray-700">{prompt}</p>
@@ -17,7 +17,7 @@ const Modal = ({ isOpen, onClose, prompt, poem, joy, fear, anger, disgust, sadne
           </div>
           <div className="space-y-4">
             <h3 className="text-xl font-semibold text-gray-900">Emotions</h3>
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
               {[
                 { label: 'Joy', value: joy },
                 { label: 'Sadness', value: sadness },

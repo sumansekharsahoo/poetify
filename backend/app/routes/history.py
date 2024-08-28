@@ -34,7 +34,6 @@ def ping():
 def getPoem():
     data = request.get_json()
     prompt_id = data["prompt_id"]
-    print(prompt_id)
     # return jsonify({"message": "Poem"}), 200
     prompt = Prompt.query.filter_by(id=prompt_id).first()
     emotion = Emotion.query.filter_by(prompt_id=prompt_id).first()
