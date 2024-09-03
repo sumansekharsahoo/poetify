@@ -11,10 +11,12 @@ export const isAuthenticated = () => {
 };
 
 export const getUserId=()=>{
-  return localStorage.getItem('poetifytoken')[0];
+  	let id = localStorage.getItem('poetifytoken').split(',')[0];
+	console.log(typeof(id));
+	return id;
 }
 
 export const getUserName=()=>{
-  let len=localStorage.getItem('poetifytoken').length;
-  return localStorage.getItem('poetifytoken').substring(2,len);
+  let name = localStorage.getItem('poetifytoken').split(',')[1];
+  return name;
 }
