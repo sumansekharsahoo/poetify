@@ -10,7 +10,7 @@ import { logoutUser } from '../utils/api';
 
 ChartJS.register(RadialLinearScale, PointElement, LineElement, Filler, Tooltip, Legend);
 
-const socket = io('http://15.206.82.21:5000'); 
+const socket = io('http://3.6.142.224:5000'); 
 
 const RadarChart = ( {joy, sadness, anger, fear, disgust} ) => {
   const data = {
